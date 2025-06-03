@@ -28,6 +28,15 @@ pipeline:
                     command: |-
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry
+                  identifier: BuildAndPushDockerRegistry
+                  spec:
+                    connectorRef: DockerHub
+                    repo: skywayaquaduct/harness
+                    tags:
+                      - <+pipeline.sequenceId>
           platform:
             arch: Arm64
             os: MacOS
