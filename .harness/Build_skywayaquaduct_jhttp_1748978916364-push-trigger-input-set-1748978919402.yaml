@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_skywayaquaduct_jhttp_1748978916364-push-trigger-input-set
+  identifier: Build_skywayaquaduct_jhttp_1748978916364pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_skywayaquaduct_jhttp_1748978916364
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
