@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_skywayaquaduct_jhttp_1748978916364-pr-trigger-input-set
+  identifier: Build_skywayaquaduct_jhttp_1748978916364prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_skywayaquaduct_jhttp_1748978916364
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
