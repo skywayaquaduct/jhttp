@@ -1,0 +1,39 @@
+pipeline:
+  name: jhttp-build-pushtodocker
+  identifier: jhttpbuildpushtodocker
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1748978865053
+        repoName: skywayaquaduct/jhttp
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry
+                  identifier: BuildAndPushDockerRegistry
+                  spec:
+                    connectorRef: DockerHub
+                    repo: skywayaquaduct/harness
+                    tags:
+                      - <+pipeline.sequenceId>
