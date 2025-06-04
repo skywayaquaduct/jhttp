@@ -19,15 +19,26 @@ pipeline:
           cloneCodebase: true
           execution:
             steps:
-              - step:
-                  type: Run
-                  identifier: build_java_app
-                  name: Build Java App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      mvn -B package --file pom.xml
+              - parallel:
+                  - step:
+                      type: Run
+                      identifier: build_java_app
+                      name: Build Java App
+                      spec:
+                        shell: Sh
+                        command: |-
+                          echo "Welcome to Harness CI"
+                          mvn -B package --file pom.xml
+                  - step:
+                      type: Test
+                      name: Test
+                      identifier: Test
+                      spec:
+                        shell: Sh
+                        command: |
+                          mvn test
+                          mvn package -DskipTests
+                        intelligenceMode: true
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry
