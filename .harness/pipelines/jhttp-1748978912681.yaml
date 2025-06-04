@@ -33,7 +33,7 @@ pipeline:
                   name: BuildAndPushDockerRegistry
                   identifier: BuildAndPushDockerRegistry
                   spec:
-                    connectorRef: ltMYqUlYSyCR52z4IYXqSQ
+                    connectorRef: Hub
                     repo: skywayaquaduct/harness
                     tags:
                       - <+pipeline.sequenceId>
