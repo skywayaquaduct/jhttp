@@ -11,13 +11,6 @@ pipeline:
         repoName: skywayaquaduct/jhttp
   stages:
     - stage:
-        name: Canary
-        identifier: Canary
-        tags: {}
-        template:
-          templateRef: Canary_Deployments
-          versionLabel: "1"
-    - stage:
         identifier: build
         name: build
         spec:
