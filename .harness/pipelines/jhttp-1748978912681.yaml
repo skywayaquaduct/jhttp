@@ -44,3 +44,10 @@ pipeline:
             type: Docker
             spec: {}
         type: CI
+    - stage:
+        name: Canary Deploy
+        identifier: Canary_Deploy
+        tags: {}
+        template:
+          templateRef: Canary_Deployments
+          versionLabel: "1"
